@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model VoiceActor {
+  id         String      @id @default(cuid())
+  name       String
+  headshot   String?     // URL to official headshot image
+  bio        String?     // Short biographical paragraph
+  birthDate  DateTime?
+  birthCity  String?
+  marriedTo  String?
+  characters Character[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@map("voice_actors")
+}
+
+model Show {
+  id         String      @id @default(cuid())
+  title      String
+  type       ShowType
+  year       Int?
+  characters Character[]
+
+  @@map("shows")
+}
+
+model Character {
+  id           String     @id @default(cuid())
+  name         String
+  image        String?    // URL to character image
+  voiceActor   VoiceActor @relation(fields: [voiceActorId], references: [id])
+  voiceActorId String
+  show         Show       @relation(fields: [showId], references: [id])
+  showId       String
+
+  @@map("characters")
+}
+
+enum ShowType {
+  TV_SHOW
+  MOVIE
+}
