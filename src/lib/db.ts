@@ -58,6 +58,17 @@ export async function getAllShows() {
   return prisma.show.findMany({ orderBy: { title: "asc" } });
 }
 
+export async function getAllShowsWithCount() {
+  return prisma.show.findMany({
+    orderBy: { title: "asc" },
+    include: { _count: { select: { characters: true } } },
+  });
+}
+
+export async function getShowById(id: string) {
+  return prisma.show.findUnique({ where: { id } });
+}
+
 export interface ShowInput {
   title: string;
   type: ShowType;
@@ -70,6 +81,10 @@ export async function createShow(data: ShowInput) {
   });
   if (existing) return existing;
   return prisma.show.create({ data });
+}
+
+export async function updateShow(id: string, data: ShowInput) {
+  return prisma.show.update({ where: { id }, data });
 }
 
 export async function deleteShow(id: string) {

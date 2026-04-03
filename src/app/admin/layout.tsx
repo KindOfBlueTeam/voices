@@ -19,6 +19,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <Link href="/admin" className="text-gray-400 hover:text-white text-sm transition-colors ml-auto">
           Voice Actors
         </Link>
+        <Link href="/admin/shows" className="text-gray-400 hover:text-white text-sm transition-colors">
+          Shows &amp; Movies
+        </Link>
       </nav>
       <div className="max-w-4xl mx-auto px-6 py-10">{children}</div>
     </div>

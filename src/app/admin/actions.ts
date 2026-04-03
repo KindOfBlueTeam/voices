@@ -8,6 +8,8 @@ import {
   updateVoiceActor,
   deleteVoiceActor,
   createShow,
+  updateShow,
+  deleteShow,
   createCharacter,
   updateCharacter,
   deleteCharacter,
@@ -111,6 +113,37 @@ export async function saveCharacter(formData: FormData) {
   revalidatePath(`/admin/actors/${actorId}`);
   redirect(`/admin/actors/${actorId}?saved=1`);
 }
+
+// ─── Shows ────────────────────────────────────────────────────────────────
+
+export async function saveShow(formData: FormData) {
+  const id = formData.get("id") as string | null;
+  const title = (formData.get("title") as string).trim();
+  const typeRaw = formData.get("type") as string;
+  const yearRaw = (formData.get("year") as string).trim();
+  const type = typeRaw === "MOVIE" ? ShowType.MOVIE : ShowType.TV_SHOW;
+  const year = yearRaw ? parseInt(yearRaw, 10) : null;
+
+  if (id) {
+    await updateShow(id, { title, type, year });
+    revalidatePath("/admin/shows");
+    revalidatePath(`/admin/shows/${id}`);
+    redirect(`/admin/shows/${id}?saved=1`);
+  } else {
+    const show = await createShow({ title, type, year });
+    revalidatePath("/admin/shows");
+    redirect(`/admin/shows/${show.id}?saved=1`);
+  }
+}
+
+export async function removeShow(formData: FormData) {
+  const id = formData.get("id") as string;
+  await deleteShow(id);
+  revalidatePath("/admin/shows");
+  redirect("/admin/shows");
+}
+
+// ─── Characters ───────────────────────────────────────────────────────────
 
 export async function removeCharacter(formData: FormData) {
   const charId = formData.get("charId") as string;
