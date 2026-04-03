@@ -33,7 +33,7 @@ export default async function VoiceActorPage({ params }: Props) {
       {/* Back link */}
       <Link
         href="/"
-        className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 mb-8 transition-colors"
+        className="inline-flex items-center gap-1 text-sm text-brand-navy/60 hover:text-brand-red mb-8 transition-colors"
       >
         ← All voice actors
       </Link>
@@ -41,7 +41,7 @@ export default async function VoiceActorPage({ params }: Props) {
       {/* Top section: headshot + bio, side by side */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12" style={{ maxWidth: "720px" }}>
         {/* Headshot */}
-        <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-gray-100 shadow-md">
+        <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-brand-cream shadow-md">
           {actor.headshot ? (
             <Image
               src={actor.headshot}
@@ -52,8 +52,8 @@ export default async function VoiceActorPage({ params }: Props) {
               priority
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gray-200">
-              <span className="text-8xl text-gray-400">{actor.name.charAt(0)}</span>
+            <div className="w-full h-full flex items-center justify-center bg-brand-gold/30">
+              <span className="text-8xl text-brand-navy/40">{actor.name.charAt(0)}</span>
             </div>
           )}
         </div>
@@ -67,12 +67,12 @@ export default async function VoiceActorPage({ params }: Props) {
       {/* Shows section */}
       {shows.length > 0 && (
         <div className="mb-10">
-          <h2 className="text-lg font-semibold text-gray-700 mb-3">Worked on</h2>
+          <h2 className="text-lg font-semibold text-brand-navy mb-3">Worked on</h2>
           <div className="flex flex-wrap gap-2">
             {shows.map((title) => (
               <span
                 key={title}
-                className="bg-gray-900 text-white text-sm px-3 py-1 rounded-full"
+                className="bg-brand-navy text-brand-gold text-sm px-3 py-1 rounded-full"
               >
                 {title}
               </span>
@@ -84,7 +84,7 @@ export default async function VoiceActorPage({ params }: Props) {
       {/* Character tiles */}
       {actor.characters.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold text-gray-700 mb-4">Characters</h2>
+          <h2 className="text-lg font-semibold text-brand-navy mb-4">Characters</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
             {actor.characters.map((char) => (
               <CharacterTile

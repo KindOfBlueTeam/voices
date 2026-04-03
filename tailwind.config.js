@@ -10,6 +10,15 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
+      colors: {
+        brand: {
+          navy:   "#003049",
+          red:    "#d62828",
+          orange: "#f77f00",
+          gold:   "#fcbf49",
+          cream:  "#eae2b7",
+        },
+      },
     },
   },
   plugins: [],

@@ -27,32 +27,32 @@ function getAge(birthDate: Date | null): string {
 
 export default function BioCard({ actor }: Props) {
   return (
-    <div className="bg-gray-900 text-white rounded-2xl p-6 flex flex-col justify-between h-full">
+    <div className="bg-brand-navy text-white rounded-2xl p-6 flex flex-col justify-between h-full">
       <div>
-        <h1 className="text-2xl font-bold leading-tight mb-4">{actor.name}</h1>
+        <h1 className="text-2xl font-bold leading-tight mb-4 text-brand-gold">{actor.name}</h1>
 
         <dl className="space-y-2 text-sm">
           <div className="flex gap-2">
-            <dt className="text-gray-400 w-24 shrink-0">Born</dt>
-            <dd className="text-gray-100">{formatDate(actor.birthDate)}</dd>
+            <dt className="text-brand-gold/60 w-24 shrink-0">Born</dt>
+            <dd className="text-brand-cream">{formatDate(actor.birthDate)}</dd>
           </div>
           <div className="flex gap-2">
-            <dt className="text-gray-400 w-24 shrink-0">Age</dt>
-            <dd className="text-gray-100">{getAge(actor.birthDate)}</dd>
+            <dt className="text-brand-gold/60 w-24 shrink-0">Age</dt>
+            <dd className="text-brand-cream">{getAge(actor.birthDate)}</dd>
           </div>
           <div className="flex gap-2">
-            <dt className="text-gray-400 w-24 shrink-0">City</dt>
-            <dd className="text-gray-100">{actor.birthCity ?? "—"}</dd>
+            <dt className="text-brand-gold/60 w-24 shrink-0">City</dt>
+            <dd className="text-brand-cream">{actor.birthCity ?? "—"}</dd>
           </div>
           <div className="flex gap-2">
-            <dt className="text-gray-400 w-24 shrink-0">Married to</dt>
-            <dd className="text-gray-100">{actor.marriedTo ?? "—"}</dd>
+            <dt className="text-brand-gold/60 w-24 shrink-0">Married to</dt>
+            <dd className="text-brand-cream">{actor.marriedTo ?? "—"}</dd>
           </div>
         </dl>
       </div>
 
       {actor.bio && (
-        <p className="text-gray-300 text-sm leading-relaxed mt-6 border-t border-gray-700 pt-4">
+        <p className="text-brand-cream/70 text-sm leading-relaxed mt-6 border-t border-brand-gold/20 pt-4">
           {actor.bio}
         </p>
       )}

@@ -13,9 +13,9 @@ interface Props {
 export default function VoiceActorCard({ actor }: Props) {
   return (
     <Link href={`/voice-actors/${actor.id}`}>
-      <div className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer border border-gray-100">
+      <div className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer border border-brand-gold/40 hover:border-brand-orange/60">
         {/* Headshot */}
-        <div className="relative w-full aspect-square bg-gray-100">
+        <div className="relative w-full aspect-square bg-brand-cream">
           {actor.headshot ? (
             <Image
               src={actor.headshot}
@@ -25,8 +25,8 @@ export default function VoiceActorCard({ actor }: Props) {
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gray-200">
-              <span className="text-5xl text-gray-400">
+            <div className="w-full h-full flex items-center justify-center bg-brand-gold/30">
+              <span className="text-5xl text-brand-navy/40">
                 {actor.name.charAt(0)}
               </span>
             </div>
@@ -35,11 +35,11 @@ export default function VoiceActorCard({ actor }: Props) {
 
         {/* Name */}
         <div className="p-4">
-          <h2 className="font-bold text-gray-900 text-lg leading-tight">
+          <h2 className="font-bold text-brand-navy text-lg leading-tight">
             {actor.name}
           </h2>
           {actor.characters.length > 0 && (
-            <p className="text-sm text-gray-500 mt-1 truncate">
+            <p className="text-sm text-brand-navy/55 mt-1 truncate">
               {actor.characters[0].show.title}
               {actor.characters.length > 1 &&
                 ` + ${actor.characters.length - 1} more`}

@@ -13,17 +13,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50 text-gray-900">
-        <header className="bg-gray-900 text-white">
+      <body className="min-h-screen text-brand-navy">
+        <header className="bg-brand-navy text-white">
           <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-3">
             <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <span className="text-2xl">🎙️</span>
-              <span className="font-bold text-xl tracking-tight">Voices</span>
+              <span className="font-bold text-xl tracking-tight text-brand-gold">Voices</span>
             </a>
           </div>
         </header>
         <main className="max-w-7xl mx-auto px-6 py-10">{children}</main>
-        <footer className="text-center text-gray-400 text-sm py-8 border-t border-gray-200 mt-16">
+        <footer className="text-center text-brand-navy/50 text-sm py-8 border-t border-brand-gold/40 mt-16">
           Voices — A voice actor character database
         </footer>
       </body>

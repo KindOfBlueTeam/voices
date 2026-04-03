@@ -12,9 +12,9 @@ export default function CharacterTile({
   showTitle,
 }: Props) {
   return (
-    <div className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+    <div className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-gold/40 hover:border-brand-orange/60 hover:shadow-md transition-all duration-200">
       {/* Character image — square */}
-      <div className="relative w-full aspect-square bg-gray-50">
+      <div className="relative w-full aspect-square bg-brand-cream/60">
         {characterImage ? (
           <Image
             src={characterImage}
@@ -25,17 +25,17 @@ export default function CharacterTile({
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-4xl text-gray-300">?</span>
+            <span className="text-4xl text-brand-gold/50">?</span>
           </div>
         )}
       </div>
 
       {/* Labels */}
       <div className="px-3 py-3">
-        <p className="font-bold text-gray-800 text-sm leading-tight truncate">
+        <p className="font-bold text-brand-navy text-sm leading-tight truncate">
           {showTitle}
         </p>
-        <p className="italic text-gray-500 text-sm mt-0.5 truncate">
+        <p className="italic text-brand-navy/55 text-sm mt-0.5 truncate">
           {characterName}
         </p>
       </div>
