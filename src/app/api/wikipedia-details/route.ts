@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 interface WikiDetails {
+  name: string | null;
+  thumbnailUrl: string | null;
   birthDate: string | null;
   birthCity: string | null;
   marriedTo: string | null;
@@ -34,8 +36,11 @@ export async function GET(req: Request) {
   }
   const summary = await summaryRes.json();
   const qid: string | undefined = summary.wikibase_item;
+  const name: string = summary.title ?? null;
+  const thumbnailUrl: string | null = summary.thumbnail?.source ?? null;
+
   if (!qid) {
-    return NextResponse.json({ birthDate: null, birthCity: null, marriedTo: null });
+    return NextResponse.json({ name, thumbnailUrl, birthDate: null, birthCity: null, marriedTo: null });
   }
 
   // Fetch Wikidata entity
@@ -48,7 +53,7 @@ export async function GET(req: Request) {
   const entityData = await entityRes.json();
   const claims = entityData?.entities?.[qid]?.claims ?? {};
 
-  const result: WikiDetails = { birthDate: null, birthCity: null, marriedTo: null };
+  const result: WikiDetails = { name, thumbnailUrl, birthDate: null, birthCity: null, marriedTo: null };
 
   // P569 — date of birth
   const dobClaim = claims["P569"]?.[0]?.mainsnak?.datavalue?.value;

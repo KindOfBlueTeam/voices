@@ -38,15 +38,21 @@ function Field({
 }
 
 export default function NewActorForm() {
+  const [name, setName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [birthCity, setBirthCity] = useState("");
   const [marriedTo, setMarriedTo] = useState("");
+  const [headshotUrl, setHeadshotUrl] = useState("");
 
   function handleWikiResult(data: {
+    name: string | null;
+    thumbnailUrl: string | null;
     birthDate: string | null;
     birthCity: string | null;
     marriedTo: string | null;
   }) {
+    if (data.name) setName(data.name);
+    if (data.thumbnailUrl) setHeadshotUrl(data.thumbnailUrl);
     if (data.birthDate) setBirthDate(data.birthDate);
     if (data.birthCity) setBirthCity(data.birthCity);
     if (data.marriedTo) setMarriedTo(data.marriedTo);
@@ -64,6 +70,8 @@ export default function NewActorForm() {
               type="text"
               required
               placeholder="e.g. Mel Blanc"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className={inputCls}
             />
           </Field>
@@ -113,6 +121,8 @@ export default function NewActorForm() {
 
         <Section title="Headshot">
           <ImageInput
+            key={headshotUrl || "empty"}
+            currentUrl={headshotUrl || null}
             urlFieldName="headshotUrl"
             fileFieldName="headshotFile"
             label="Headshot image"

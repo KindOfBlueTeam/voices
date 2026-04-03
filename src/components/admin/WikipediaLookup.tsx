@@ -4,6 +4,8 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 
 interface WikiDetails {
+  name: string | null;
+  thumbnailUrl: string | null;
   birthDate: string | null;
   birthCity: string | null;
   marriedTo: string | null;
