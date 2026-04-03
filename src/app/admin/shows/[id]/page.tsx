@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getShowById } from "@/lib/db";
 import { saveShow, removeShow } from "../../actions";
 import ConfirmButton from "@/components/admin/ConfirmButton";
+import ShowCastLookup from "@/components/admin/ShowCastLookup";
 
 export const dynamic = "force-dynamic";
 
@@ -83,6 +84,8 @@ export default async function EditShowPage({ params, searchParams }: Props) {
           </button>
         </div>
       </form>
+
+      <ShowCastLookup initialQuery={show.title} />
 
       <div className="mt-6 bg-gray-900 rounded-xl border border-red-900/50 p-6">
         <h2 className="text-sm font-semibold text-red-400 uppercase tracking-wider mb-4">Danger Zone</h2>
