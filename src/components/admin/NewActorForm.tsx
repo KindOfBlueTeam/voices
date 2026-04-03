@@ -37,8 +37,8 @@ function Field({
   );
 }
 
-export default function NewActorForm() {
-  const [name, setName] = useState("");
+export default function NewActorForm({ initialName = "" }: { initialName?: string }) {
+  const [name, setName] = useState(initialName);
   const [birthDate, setBirthDate] = useState("");
   const [birthCity, setBirthCity] = useState("");
   const [marriedTo, setMarriedTo] = useState("");

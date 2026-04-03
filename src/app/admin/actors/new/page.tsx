@@ -1,6 +1,10 @@
 import NewActorForm from "@/components/admin/NewActorForm";
 
-export default function NewActorPage() {
+interface Props {
+  searchParams: { name?: string };
+}
+
+export default function NewActorPage({ searchParams }: Props) {
   return (
     <div>
       <div className="mb-8">
@@ -10,7 +14,7 @@ export default function NewActorPage() {
         </p>
       </div>
 
-      <NewActorForm />
+      <NewActorForm initialName={searchParams.name ?? ""} />
     </div>
   );
 }
