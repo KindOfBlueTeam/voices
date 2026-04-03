@@ -65,6 +65,10 @@ export interface ShowInput {
 }
 
 export async function createShow(data: ShowInput) {
+  const existing = await prisma.show.findFirst({
+    where: { title: data.title, type: data.type, year: data.year ?? null },
+  });
+  if (existing) return existing;
   return prisma.show.create({ data });
 }
 

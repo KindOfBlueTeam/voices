@@ -29,6 +29,7 @@ model Show {
   year       Int?
   characters Character[]
 
+  @@unique([title, type, year])
   @@map("shows")
 }
 
