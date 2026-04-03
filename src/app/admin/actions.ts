@@ -23,7 +23,7 @@ export async function saveActor(formData: FormData) {
   const birthDateRaw = formData.get("birthDate") as string;
   const birthCity = (formData.get("birthCity") as string).trim() || null;
   const marriedTo = (formData.get("marriedTo") as string).trim() || null;
-  const headshotUrl = (formData.get("headshotUrl") as string).trim() || null;
+  const headshotUrl = (formData.get("headshotUrl") as string | null)?.trim() || null;
   const headshotFile = formData.get("headshotFile") as File | null;
 
   const birthDate =
@@ -70,7 +70,7 @@ export async function saveCharacter(formData: FormData) {
   const actorId = formData.get("actorId") as string;
   const charId = formData.get("charId") as string | null;
   const name = (formData.get("name") as string).trim();
-  const imageUrl = (formData.get("imageUrl") as string).trim() || null;
+  const imageUrl = (formData.get("imageUrl") as string | null)?.trim() || null;
   const imageFile = formData.get("imageFile") as File | null;
 
   // Resolve show — either existing or newly created
