@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllVoiceActors } from "@/lib/db";
 import { removeActor } from "./actions";
+import ConfirmButton from "@/components/admin/ConfirmButton";
 
 export const dynamic = "force-dynamic";
 
@@ -74,17 +75,12 @@ export default async function AdminHome() {
                 </Link>
                 <form action={removeActor}>
                   <input type="hidden" name="id" value={actor.id} />
-                  <button
-                    type="submit"
+                  <ConfirmButton
+                    message={`Delete ${actor.name} and all their characters?`}
                     className="text-sm text-red-500 hover:text-red-400 px-3 py-1.5 rounded-lg hover:bg-gray-800 transition-colors"
-                    onClick={(e) => {
-                      if (!confirm(`Delete ${actor.name} and all their characters?`)) {
-                        e.preventDefault();
-                      }
-                    }}
                   >
                     Delete
-                  </button>
+                  </ConfirmButton>
                 </form>
               </div>
             </div>

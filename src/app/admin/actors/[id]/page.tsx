@@ -5,6 +5,7 @@ import { getVoiceActorById, getAllShows } from "@/lib/db";
 import { saveActor, saveCharacter, removeCharacter } from "../../actions";
 import ImageInput from "@/components/admin/ImageInput";
 import ShowSelector from "@/components/admin/ShowSelector";
+import ConfirmButton from "@/components/admin/ConfirmButton";
 
 export const dynamic = "force-dynamic";
 
@@ -164,15 +165,12 @@ export default async function EditActorPage({ params, searchParams }: Props) {
                 <form action={removeCharacter}>
                   <input type="hidden" name="charId" value={char.id} />
                   <input type="hidden" name="actorId" value={actor.id} />
-                  <button
-                    type="submit"
+                  <ConfirmButton
+                    message={`Remove ${char.name}?`}
                     className="text-xs text-red-500 hover:text-red-400 px-2 py-1 rounded hover:bg-gray-700 transition-colors"
-                    onClick={(e) => {
-                      if (!confirm(`Remove ${char.name}?`)) e.preventDefault();
-                    }}
                   >
                     Remove
-                  </button>
+                  </ConfirmButton>
                 </form>
               </div>
             ))}
